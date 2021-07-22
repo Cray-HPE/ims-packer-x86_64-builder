@@ -3,6 +3,9 @@ An openSUSE x86-64-based Docker image containing the packer tool for image
 building. This is part of the CMS Image Management and Image Customization
 toolset for Shasta-based systems.
 
+**NOTE:** This repo represents a proof of concept and is not production ready. Significant additional work
+is required to fully integrate packer support into the Image Management System (IMS) workflow.
+
 ##IMS Workflow
 
 This container is part of the IMS workflow used to create new images from a packer
