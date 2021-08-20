@@ -75,10 +75,14 @@ stack via Kubernetes, specifically as a part of the Image Management Service.
 Development on this repository should follow the standard CMS development
 [process](https://connect.us.cray.com/confluence/x/fFGfBQ).
 
-### Versioning
-We use [SemVer](http://semver.org/) for versioning. See the `.version` file in
-the repository root for the current version. Please update that version when
-making changes.
+## Versioning
+If and when this image begins being built, it will use dynamic versioning like other CMS repositories,
+with the assistance of the [cms-meta-tools](https://github.com/Cray-HPE/cms-meta-tools) repo.
+
+## New Release Branches
+When making a new release branch:
+    * Be sure to set the `.x` and `.y` files to the desired major and minor version number for this repo for this release. 
+    * If an `update_external_versions.conf` file exists in this repo, be sure to update that as well, if needed.
 
 ## Authors
 * Eric Cozzi
