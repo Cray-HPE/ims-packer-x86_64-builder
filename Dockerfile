@@ -1,4 +1,4 @@
-## Cray Image Management Service image build environment Dockerfile
+# Cray Image Management Service image build environment Dockerfile
 # Copyright 2018, 2021 Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
@@ -23,14 +23,17 @@
 
 FROM arti.dev.cray.com/baseos-docker-master-local/opensuse-leap:15.2 as base
 COPY requirements.txt constraints.txt  /
-RUN zypper in -y curl ca-certificates-mozilla python3-pip unzip && \
-    zypper clean && \
-    curl -O https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && \
+RUN zypper in -y curl ca-certificates-mozilla python3-pip unzip
+# Apply security patches
+RUN zypper refresh
+RUN zypper patch -y --with-update --with-optional
+RUN zypper clean
+RUN curl -O https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && \
     unzip packer_1.6.0_linux_amd64.zip -d /usr/local && \
-    pip install --upgrade pip \
+    pip3 install --upgrade pip \
         --trusted-host arti.dev.cray.com \
         --index-url https://arti.dev.cray.com:443/artifactory/api/pypi/pypi-remote/simple && \
-    pip install \
+    pip3 install \
        --no-cache-dir \
        -r requirements.txt
 VOLUME /mnt/image
