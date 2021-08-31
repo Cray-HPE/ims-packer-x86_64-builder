@@ -1,1 +1,1 @@
-ims-python-helper>=2.5.9
+ims-python-helper>=2.6.18
