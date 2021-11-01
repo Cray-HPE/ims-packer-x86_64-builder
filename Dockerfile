@@ -24,10 +24,11 @@
 FROM arti.dev.cray.com/baseos-docker-master-local/opensuse-leap:15.2 as base
 COPY requirements.txt constraints.txt  /
 RUN zypper in -y curl ca-certificates-mozilla python3-pip unzip
+
 # Apply security patches
-RUN zypper refresh
-RUN zypper patch -y --with-update --with-optional
-RUN zypper clean
+COPY zypper-refresh-patch-clean.sh /
+RUN /zypper-refresh-patch-clean.sh && rm /zypper-refresh-patch-clean.sh
+
 RUN curl -O https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && \
     unzip packer_1.6.0_linux_amd64.zip -d /usr/local && \
     pip3 install --upgrade pip \
