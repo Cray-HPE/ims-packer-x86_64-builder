@@ -23,7 +23,7 @@
 #
 # Cray Image Management Service image build environment Dockerfile
 
-FROM artifactory.algol60.net/artifactory/csm-docker/stable/docker.io/opensuse/leap:15.2 as base
+FROM artifactory.algol60.net/csm-docker/stable/docker.io/opensuse/leap:15.2 as base
 COPY requirements.txt constraints.txt  /
 RUN zypper in -y curl ca-certificates-mozilla python3-pip unzip
 
