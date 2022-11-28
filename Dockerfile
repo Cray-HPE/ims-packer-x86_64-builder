@@ -31,7 +31,8 @@ RUN zypper in -y curl ca-certificates-mozilla python3-pip unzip
 COPY zypper-refresh-patch-clean.sh /
 RUN /zypper-refresh-patch-clean.sh && rm /zypper-refresh-patch-clean.sh
 
-RUN curl -O https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && \
+RUN --mount=type=secret,id=netrc,target=/root/.netrc \
+    curl -O https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && \
     unzip packer_1.6.0_linux_amd64.zip -d /usr/local && \
     pip3 install --upgrade pip && \
     pip3 install \
