@@ -1,5 +1,5 @@
 # Cray Image Management Service image build environment Dockerfile
-# Copyright 2018, 2021 Hewlett Packard Enterprise Development LP
+# Copyright 2018, 2021-2022 Hewlett Packard Enterprise Development LP
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the "Software"),
@@ -29,7 +29,8 @@ RUN zypper in -y curl ca-certificates-mozilla python3-pip unzip
 COPY zypper-refresh-patch-clean.sh /
 RUN /zypper-refresh-patch-clean.sh && rm /zypper-refresh-patch-clean.sh
 
-RUN curl -O https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && \
+RUN --mount=type=secret,id=netrc,target=/root/.netrc \
+    curl -O https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && \
     unzip packer_1.6.0_linux_amd64.zip -d /usr/local && \
     pip3 install --upgrade pip \
         --trusted-host arti.dev.cray.com \
