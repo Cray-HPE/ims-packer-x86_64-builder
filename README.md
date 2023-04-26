@@ -1,4 +1,4 @@
-#  ims-packer-opensuse-x86_64-builder
+# ims-packer-opensuse-x86_64-builder
 An openSUSE x86-64-based Docker image containing the packer tool for image 
 building. This is part of the CMS Image Management and Image Customization
 toolset for Shasta-based systems.
@@ -6,7 +6,7 @@ toolset for Shasta-based systems.
 **NOTE:** This repo represents a proof of concept and is not production ready. Significant additional work
 is required to fully integrate packer support into the Image Management System (IMS) workflow.
 
-##IMS Workflow
+## IMS Workflow
 
 This container is part of the IMS workflow used to create new images from a packer
 recipe description. Upon successful building of a recipe, the follow on containers
@@ -74,15 +74,6 @@ stack via Kubernetes, specifically as a part of the Image Management Service.
 ## Development
 Development on this repository should follow the standard CMS development
 [process](https://connect.us.cray.com/confluence/x/fFGfBQ).
-
-## Versioning
-If and when this image begins being built, it will use dynamic versioning like other CMS repositories,
-with the assistance of the [cms-meta-tools](https://github.com/Cray-HPE/cms-meta-tools) repo.
-
-## New Release Branches
-When making a new release branch:
-    * Be sure to set the `.x` and `.y` files to the desired major and minor version number for this repo for this release. 
-    * If an `update_external_versions.conf` file exists in this repo, be sure to update that as well, if needed.
 
 ## Authors
 * Eric Cozzi
