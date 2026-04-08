@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Dependencies
 - CASMCMS-8722: Use `update_external_versions` to get latest patch version of `ims-python-helper` Python module.
+- CASMCMS-9637: Update to latest version of `zypper-refresh-patch-clean.sh` helper script
 ### Removed
 - Removed defunct files leftover from previous versioning system
 
